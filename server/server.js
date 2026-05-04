@@ -21,6 +21,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth',     require('./routes/auth'));
@@ -31,6 +33,12 @@ app.use('/api/admin',    require('./routes/admin'));
 app.use('/api/contact',  require('./routes/contact'));
 app.use('/api/upload',   require('./routes/upload'));
 app.get('/api/health', (_, res) => res.json({ success: true, message: 'Print3D API running', time: new Date() }));
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 app.use((err, req, res, next) => {
   console.error('Error:', err.message);
