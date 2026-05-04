@@ -1,0 +1,50 @@
+import { Link } from 'react-router-dom'
+import { Printer, Mail, Phone, MapPin, Instagram, Twitter, Linkedin } from 'lucide-react'
+
+export default function Footer() {
+  return (
+    <footer className="bg-slate-900 text-slate-300">
+      <div className="page-container py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          <div className="lg:col-span-2">
+            <Link to="/" className="flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 bg-primary-600 rounded-xl flex items-center justify-center">
+                <Printer className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-display font-bold text-xl text-white">Print<span className="text-primary-400">3D</span></span>
+            </Link>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">Bringing your ideas to life with precision 3D printing. High quality, fast turnaround for creators, innovators & businesses.</p>
+            <div className="space-y-2 text-sm">
+              <a href="tel:+919876543210" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"><Phone className="w-4 h-4 text-primary-400" />+91 98765 43210</a>
+              <a href="mailto:hello@print3d.com" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"><Mail className="w-4 h-4 text-primary-400" />hello@print3d.com</a>
+              <div className="flex items-start gap-2.5 text-slate-400"><MapPin className="w-4 h-4 text-primary-400 flex-shrink-0 mt-0.5" /><span>123 Innovation Drive, Tech Park,<br/>Bangalore, India – 560001</span></div>
+            </div>
+            <div className="flex gap-3 mt-5">
+              {[Instagram, Twitter, Linkedin].map((Icon, i) => (
+                <a key={i} href="#" className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"><Icon className="w-4 h-4"/></a>
+              ))}
+            </div>
+          </div>
+          {[
+            { title:'Quick Links', links:[{to:'/',l:'Home'},{to:'/products',l:'Products'},{to:'/pricing',l:'Pricing'},{to:'/upload',l:'Upload Design'},{to:'/about',l:'About Us'}] },
+            { title:'Services', links:[{to:'/products?category=Prototypes',l:'Prototyping'},{to:'/products?category=Industrial Parts',l:'Industrial Parts'},{to:'/products?category=Custom Orders',l:'Custom Orders'},{to:'/products?category=Home Decor',l:'Home Décor'}] },
+            { title:'Support', links:[{to:'/faq',l:'FAQ'},{to:'/contact',l:'Contact Us'},{to:'/orders',l:'Track Order'}] },
+          ].map(({ title, links }) => (
+            <div key={title}>
+              <h4 className="text-white font-semibold font-display mb-4">{title}</h4>
+              <ul className="space-y-2.5">{links.map(({ to, l }) => <li key={l}><Link to={to} className="text-slate-400 hover:text-white text-sm transition-colors">{l}</Link></li>)}</ul>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Print3D. All rights reserved.</p>
+          <div className="flex gap-5 text-sm text-slate-500">
+            <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Terms</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Refund Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
