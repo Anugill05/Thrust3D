@@ -1,4 +1,4 @@
-# Print3D – Full-Stack 3D Printing Service Platform
+# Thrust3D – Full-Stack 3D Printing Service Platform
 > Production-ready MERN stack platform with admin dashboard, Razorpay payments, file upload, and premium UI.
 
 ## Quick Start
@@ -22,7 +22,7 @@ npm run dev       # starts on http://localhost:5173
 ## Login Credentials (after seeding)
 | Role  | Email                  | Password      |
 |-------|------------------------|---------------|
-| Admin | admin@print3d.com      | Admin@123456  |
+| Admin | admin@Thrust3D.com      | Admin@123456  |
 | User  | rohit@example.com      | User@123456   |
 
 ## URLs

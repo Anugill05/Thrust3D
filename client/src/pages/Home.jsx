@@ -198,7 +198,7 @@ export default function Home() {
         <div className="page-container">
           <div className="text-center mb-12">
             <div className="w-12 h-1 bg-primary-500 rounded-full mx-auto mb-4" />
-            <h2 className="section-heading text-white">Why Choose Print3D?</h2>
+            <h2 className="section-heading text-white">Why Choose Thrust3D?</h2>
             <p className="text-slate-400 mt-3">Technology meets craftsmanship for outstanding results</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

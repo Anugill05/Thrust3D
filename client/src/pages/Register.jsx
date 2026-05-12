@@ -20,7 +20,7 @@ export default function Register() {
   const onSubmit = async (data) => {
     const result = await dispatch(registerUser(data))
     if (registerUser.fulfilled.match(result)) {
-      toast.success(`Welcome to Print3D, ${result.payload.user.name.split(' ')[0]}! 🎉`)
+      toast.success(`Welcome to Thrust3D, ${result.payload.user.name.split(' ')[0]}! 🎉`)
       navigate('/')
     }
   }
@@ -31,7 +31,7 @@ export default function Register() {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2.5 mb-6">
             <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center"><Printer className="w-6 h-6 text-white"/></div>
-            <span className="font-display font-bold text-2xl text-slate-900">Print<span className="text-primary-600">3D</span></span>
+            <span className="font-display font-bold text-2xl text-slate-900">Thrust<span className="text-primary-600">3D</span></span>
           </Link>
           <h1 className="text-2xl font-display font-bold text-slate-900">Create your account</h1>
           <p className="text-slate-500 text-sm mt-1">Start your 3D printing journey</p>

@@ -20,8 +20,8 @@ export default function Contact() {
   }
 
   const CONTACTS = [
-    { icon:Phone, label:'Phone', value:'+91 98765 43210', href:'tel:+919876543210' },
-    { icon:Mail,  label:'Email', value:'hello@print3d.com', href:'mailto:hello@print3d.com' },
+    { icon:Phone, label:'Phone', value:'+91 73898 30287', href:'tel:+917389830287' },
+    { icon:Mail,  label:'Email', value:'Thrust3dofficial@gmail.com', href:'mailto:Thrust3dofficial@gmail.com' },
     { icon:MapPin,label:'Address', value:'123 Innovation Drive, Tech Park, Bangalore – 560001', href:null },
     { icon:Clock, label:'Working Hours', value:'Mon–Sat: 10:00 AM – 7:00 PM', href:null },
   ]

@@ -11,12 +11,12 @@ export default function Footer() {
               <div className="w-9 h-9 bg-primary-600 rounded-xl flex items-center justify-center">
                 <Printer className="w-5 h-5 text-white" />
               </div>
-              <span className="font-display font-bold text-xl text-white">Print<span className="text-primary-400">3D</span></span>
+              <span className="font-display font-bold text-xl text-white">Thrust<span className="text-primary-400">3D</span></span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">Bringing your ideas to life with precision 3D printing. High quality, fast turnaround for creators, innovators & businesses.</p>
             <div className="space-y-2 text-sm">
-              <a href="tel:+919876543210" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"><Phone className="w-4 h-4 text-primary-400" />+91 98765 43210</a>
-              <a href="mailto:hello@print3d.com" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"><Mail className="w-4 h-4 text-primary-400" />hello@print3d.com</a>
+              <a href="tel:+917389830287" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"><Phone className="w-4 h-4 text-primary-400" />+91 73898 30287</a>
+              <a href="mailto:Thrust3dofficial@gmail.com" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors"><Mail className="w-4 h-4 text-primary-400" />Thrust3dofficial@gmail.com</a>
               <div className="flex items-start gap-2.5 text-slate-400"><MapPin className="w-4 h-4 text-primary-400 flex-shrink-0 mt-0.5" /><span>123 Innovation Drive, Tech Park,<br/>Bangalore, India – 560001</span></div>
             </div>
             <div className="flex gap-3 mt-5">
@@ -37,7 +37,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Print3D. All rights reserved.</p>
+          <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Thrust3d. All rights reserved.</p>
           <div className="flex gap-5 text-sm text-slate-500">
             <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-slate-300 transition-colors">Terms</a>

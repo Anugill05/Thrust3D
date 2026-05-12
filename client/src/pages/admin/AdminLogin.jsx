@@ -31,7 +31,7 @@ export default function AdminLogin() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2.5 mb-5">
             <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center"><Printer className="w-7 h-7 text-white"/></div>
-            <span className="font-display font-bold text-2xl text-white">Print<span className="text-primary-400">3D</span></span>
+            <span className="font-display font-bold text-2xl text-white">Thrust<span className="text-primary-400">3D</span></span>
           </div>
           <div className="flex items-center justify-center gap-2 mb-2">
             <ShieldCheck className="w-5 h-5 text-primary-400"/>
@@ -46,7 +46,7 @@ export default function AdminLogin() {
               <label className="block text-sm font-semibold text-slate-300 mb-1.5">Admin Email</label>
               <input {...register('email',{required:'Email required'})} type="email"
                 className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary-500 placeholder:text-slate-500"
-                placeholder="admin@print3d.com"/>
+                placeholder="admin@thrust3d.com"/>
               {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
             </div>
             <div>

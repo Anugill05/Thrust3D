@@ -22,7 +22,7 @@ function SidebarContent({ onClose }) {
       <div className="p-5 border-b border-slate-700">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center"><Printer className="w-5 h-5 text-white"/></div>
-          <div><span className="font-display font-bold text-white text-base">Print3D</span><p className="text-slate-400 text-xs">Admin Panel</p></div>
+          <div><span className="font-display font-bold text-white text-base">Thrust3d</span><p className="text-slate-400 text-xs">Admin Panel</p></div>
         </div>
       </div>
       <nav className="flex-1 p-4 space-y-1 overflow-y-auto">

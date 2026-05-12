@@ -10,7 +10,7 @@ export default function About() {
           <div>
             <div className="divider"/>
             <h2 className="section-heading mb-4">Technology meets craftsmanship</h2>
-            <p className="text-slate-500 leading-relaxed mb-4">At Print3D, we combine technology, expertise and creativity to deliver outstanding 3D printing solutions. From prototypes to functional parts, we help individuals and businesses bring their ideas to life.</p>
+            <p className="text-slate-500 leading-relaxed mb-4">At Thrust3D, we combine technology, expertise and creativity to deliver outstanding 3D printing solutions. From prototypes to functional parts, we help individuals and businesses bring their ideas to life.</p>
             <p className="text-slate-500 leading-relaxed mb-6">Founded in 2020, we have helped over 500 clients — from individual creators to Fortune 500 companies — realize their vision through precision 3D printing. We operate state-of-the-art FDM and SLA printers capable of achieving tolerances as fine as 50 microns.</p>
             <div className="space-y-2">
               {['ISO-quality processes','Eco-friendly materials','99% on-time delivery','24/7 customer support'].map(f=>(

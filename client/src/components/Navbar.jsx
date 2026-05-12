@@ -34,12 +34,12 @@ export default function Navbar() {
       <div className="bg-slate-900 text-slate-300 text-xs py-2 hidden md:block">
         <div className="page-container flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <span>📞 +91 98765 43210</span>
-            <span>✉️ hello@print3d.com</span>
+            <span>📞 +91 73898 30287</span>
+            <span>✉️ Thrust3dofficial@gmail.com</span>
           </div>
           <div className="flex items-center gap-4">
             <span>🕐 Mon–Sat: 10:00 AM – 7:00 PM</span>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="text-emerald-400 hover:text-emerald-300 font-medium">WhatsApp Us</a>
+            <a href="https://wa.me/7389830287" target="_blank" rel="noreferrer" className="text-emerald-400 hover:text-emerald-300 font-medium">WhatsApp Us</a>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function Navbar() {
               <div className="w-9 h-9 bg-primary-600 rounded-xl flex items-center justify-center shadow-btn group-hover:bg-primary-700 transition-colors">
                 <Printer className="w-5 h-5 text-white" />
               </div>
-              <span className="font-display font-bold text-xl text-slate-900">Print<span className="text-primary-600">3D</span></span>
+              <span className="font-display font-bold text-xl text-slate-900">Thrust<span className="text-primary-600">3D</span></span>
             </Link>
             <nav className="hidden lg:flex items-center gap-6">
               {navLinks.map(({ to, label }) => (

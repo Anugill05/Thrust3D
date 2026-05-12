@@ -20,7 +20,7 @@ export const initiatePayment = async ({ orderId, user, onSuccess, onFailure }) =
 
     const options = {
       key: data.key, amount: data.razorpayOrder.amount, currency: 'INR',
-      name: 'Print3D', description: 'Order Payment', order_id: data.razorpayOrder.id,
+      name: 'Thrust3d', description: 'Order Payment', order_id: data.razorpayOrder.id,
       prefill: { name: user?.name || '', email: user?.email || '', contact: user?.phone || '' },
       theme: { color: '#4f46e5' },
       handler: async (resp) => {
