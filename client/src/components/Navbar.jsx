@@ -49,7 +49,7 @@ export default function Navbar() {
                 <Link to="/" className="flex items-center gap-2.5 group">
                             <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center">
                   <img
-                    src="/logo.png"
+                    src="/thrust3dlogo.jpeg"
                     alt="Thrust 3D Logo"
                     className="w-full h-full object-cover"
                   />

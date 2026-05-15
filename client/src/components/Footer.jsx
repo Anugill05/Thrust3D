@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4">
               <img
-                src="/logo.png"
+                src="/thrust3dlogo.jpeg"
                 alt="Thrust 3D Logo"
                 className="w-5 h-5 object-contain"
               />
