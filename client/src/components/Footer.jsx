@@ -8,16 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
                 <img
                   src="/thrust3dlogo.jpeg"
                   alt="Thrust 3D Logo"
-                  className="
-                    w-full h-full
-                    object-contain
-                    mix-blend-screen
-                    brightness-110
-                  "
+                  className="w-full h-full object-cover"
                 />
               </div>
               <span className="font-display font-bold text-xl text-white">Thrust<span className="text-primary-400">3D</span></span>
