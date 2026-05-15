@@ -47,13 +47,18 @@ export default function Navbar() {
         <div className="page-container">
             <div className="flex items-center justify-between h-16">
                 <Link to="/" className="flex items-center gap-2.5 group">
-                            <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center">
-                  <img
-                    src="/thrust3dlogo.jpeg"
-                    alt="Thrust 3D Logo"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                  <div className="w-11 h-11 flex items-center justify-center">
+                    <img
+                      src="/thrust3dlogo.jpeg"
+                      alt="Thrust 3D Logo"
+                      className="
+                        w-full h-full
+                        object-contain
+                        mix-blend-multiply
+                        drop-shadow-sm
+                      "
+                    />
+                  </div>
               <span className="font-display font-bold text-xl text-slate-900">Thrust<span className="text-primary-600">3D</span></span>
             </Link>
             <nav className="hidden lg:flex items-center gap-6">
