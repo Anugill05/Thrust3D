@@ -8,9 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 bg-primary-600 rounded-xl flex items-center justify-center">
-                <Printer className="w-5 h-5 text-white" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Thrust 3D Logo"
+                className="w-5 h-5 object-contain"
+              />
               <span className="font-display font-bold text-xl text-white">Thrust<span className="text-primary-400">3D</span></span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">Bringing your ideas to life with precision 3D printing. High quality, fast turnaround for creators, innovators & businesses.</p>

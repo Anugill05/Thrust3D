@@ -45,11 +45,15 @@ export default function Navbar() {
       </div>
       <header className={clsx('sticky top-0 z-50 transition-all duration-300 bg-white border-b border-slate-100', scrolled && 'shadow-sm')}>
         <div className="page-container">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 bg-primary-600 rounded-xl flex items-center justify-center shadow-btn group-hover:bg-primary-700 transition-colors">
-                <Printer className="w-5 h-5 text-white" />
-              </div>
+            <div className="flex items-center justify-between h-16">
+                <Link to="/" className="flex items-center gap-2.5 group">
+                            <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center">
+                  <img
+                    src="/logo.png"
+                    alt="Thrust 3D Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               <span className="font-display font-bold text-xl text-slate-900">Thrust<span className="text-primary-600">3D</span></span>
             </Link>
             <nav className="hidden lg:flex items-center gap-6">
