@@ -29,10 +29,33 @@ export default function Footer() {
                </div>
             </div>
             <div className="flex gap-3 mt-5">
-              {[Instagram, Twitter, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"><Icon className="w-4 h-4"/></a>
-              ))}
-            </div>
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/thrust3dofficial?igsh=MWdldmhidWl1MDEwaA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                {/* Twitter (unchanged for now) */}
+                <a
+                  href="#"
+                  className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"
+                >
+                  <Twitter className="w-4 h-4" />
+                </a>
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/in/thrust-3d-b6228a409/?skipRedirect=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+
+</div>
           </div>
           {[
             { title:'Quick Links', links:[{to:'/',l:'Home'},{to:'/products',l:'Products'},{to:'/pricing',l:'Pricing'},{to:'/upload',l:'Upload Design'},{to:'/about',l:'About Us'}] },
