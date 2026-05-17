@@ -7,6 +7,8 @@ import { Spinner } from '../../components/common'
 const CATS = ['Home Decor','Toys & Figurines','Functional Parts','Prototypes','Industrial Parts','Custom Orders','Art & Design']
 const MATS = ['PLA','ABS','PETG','TPU','Nylon','Resin (SLA)','Other']
 
+const EMPTY_BULK_TIER = { minQty: '', maxQty: '', pricePerUnit: '' }
+
 // FIX 1: Initial state uses strings for array-destined fields to ensure input stability
 const EMPTY = { 
   title: '', 
@@ -20,7 +22,8 @@ const EMPTY = {
   inStock: true, 
   customizable: false, 
   colors: '', 
-  tags: '' 
+  tags: '',
+  bulkPricing: []
 }
 
 export default function AdminProducts() {
@@ -59,11 +62,43 @@ export default function AdminProducts() {
       ...p, 
       images: Array.isArray(p.images) ? p.images.join(', ') : '',
       colors: Array.isArray(p.colors) ? p.colors.join(', ') : '', 
-      tags: Array.isArray(p.tags) ? p.tags.join(', ') : '' 
+      tags: Array.isArray(p.tags) ? p.tags.join(', ') : '',
+      bulkPricing: Array.isArray(p.bulkPricing) 
+        ? p.bulkPricing.map(t => ({ 
+            minQty: t.minQty ?? '', 
+            maxQty: t.maxQty ?? '', 
+            pricePerUnit: t.pricePerUnit ?? '' 
+          })) 
+        : []
     })
     setEditing(p._id)
     setShowForm(true)
   }
+
+  // ── Bulk pricing helpers ──────────────────────────────────────────────────
+  const addBulkTier = () => {
+    setForm(prev => ({ 
+      ...prev, 
+      bulkPricing: [...prev.bulkPricing, { ...EMPTY_BULK_TIER }] 
+    }))
+  }
+
+  const removeBulkTier = (index) => {
+    setForm(prev => ({ 
+      ...prev, 
+      bulkPricing: prev.bulkPricing.filter((_, i) => i !== index) 
+    }))
+  }
+
+  const handleBulkTierChange = (index, field, value) => {
+    setForm(prev => {
+      const updated = prev.bulkPricing.map((tier, i) => 
+        i === index ? { ...tier, [field]: value } : tier
+      )
+      return { ...prev, bulkPricing: updated }
+    })
+  }
+  // ─────────────────────────────────────────────────────────────────────────
 
   const handleSave = async () => {
     // FIX 3: Expanded Frontend Validation to match Backend Schema
@@ -74,6 +109,23 @@ export default function AdminProducts() {
       return toast.error(`Missing fields: ${missing.join(', ')}`)
     }
 
+    // Validate bulk pricing tiers
+    for (let i = 0; i < form.bulkPricing.length; i++) {
+      const t = form.bulkPricing[i]
+      if (t.minQty === '' || t.pricePerUnit === '') {
+        return toast.error(`Bulk tier ${i + 1}: Min Qty and Price are required.`)
+      }
+      if (Number(t.minQty) < 1) {
+        return toast.error(`Bulk tier ${i + 1}: Min Qty must be at least 1.`)
+      }
+      if (t.maxQty !== '' && Number(t.maxQty) < Number(t.minQty)) {
+        return toast.error(`Bulk tier ${i + 1}: Max Qty must be ≥ Min Qty.`)
+      }
+      if (Number(t.pricePerUnit) < 0) {
+        return toast.error(`Bulk tier ${i + 1}: Price must be a positive number.`)
+      }
+    }
+
     setSaving(true)
     try {
       // FIX 4: Transform strings back into arrays before sending to API
@@ -82,7 +134,12 @@ export default function AdminProducts() {
         price: Number(form.price),
         images: form.images.split(',').map(s => s.trim()).filter(Boolean),
         colors: form.colors.split(',').map(s => s.trim()).filter(Boolean),
-        tags: form.tags.split(',').map(s => s.trim()).filter(Boolean) 
+        tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
+        bulkPricing: form.bulkPricing.map(t => ({
+          minQty: Number(t.minQty),
+          maxQty: t.maxQty !== '' ? Number(t.maxQty) : undefined,
+          pricePerUnit: Number(t.pricePerUnit)
+        }))
       }
 
       if (editing) {
@@ -100,20 +157,6 @@ export default function AdminProducts() {
       toast.error(err.response?.data?.message || 'Save failed.') 
     } finally { 
       setSaving(false) 
-    }
-  }
-
-  const handleDelete = async (id) => {
-    if (!window.confirm('Delete this product? This cannot be undone.')) return
-    setDeleting(id)
-    try {
-      await api.delete('/products/' + id)
-      setProducts(prev => prev.filter(p => p._id !== id))
-      toast.success('Product deleted.')
-    } catch { 
-      toast.error('Delete failed.') 
-    } finally { 
-      setDeleting(null) 
     }
   }
 
@@ -270,6 +313,78 @@ export default function AdminProducts() {
                   <label className="label">Full Description *</label>
                   <textarea name="description" rows={4} value={form.description} onChange={handleChange} className="input-field resize-none"/>
                 </div>
+
+                {/* ── Bulk Pricing ─────────────────────────────────────────── */}
+                <div className="sm:col-span-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="label mb-0">Bulk Pricing Tiers</label>
+                    <button
+                      type="button"
+                      onClick={addBulkTier}
+                      className="btn-ghost text-xs text-primary-600 flex items-center gap-1 px-2 py-1"
+                    >
+                      <Plus className="w-3 h-3"/> Add Tier
+                    </button>
+                  </div>
+
+                  {form.bulkPricing.length === 0 ? (
+                    <p className="text-xs text-slate-400 italic">
+                      No bulk pricing tiers. Click "Add Tier" to offer quantity-based discounts.
+                    </p>
+                  ) : (
+                    <div className="space-y-2">
+                      {/* Column headers */}
+                      <div className="grid grid-cols-[1fr_1fr_1fr_auto] gap-2 px-1">
+                        <span className="text-xs font-medium text-slate-500">Min Qty *</span>
+                        <span className="text-xs font-medium text-slate-500">Max Qty</span>
+                        <span className="text-xs font-medium text-slate-500">Price / Unit (₹) *</span>
+                        <span/>
+                      </div>
+
+                      {form.bulkPricing.map((tier, index) => (
+                        <div key={index} className="grid grid-cols-[1fr_1fr_1fr_auto] gap-2 items-center bg-slate-50 rounded-lg px-3 py-2">
+                          <input
+                            type="number"
+                            min="1"
+                            value={tier.minQty}
+                            onChange={e => handleBulkTierChange(index, 'minQty', e.target.value)}
+                            placeholder="e.g. 10"
+                            className="input-field py-1.5 text-sm"
+                          />
+                          <input
+                            type="number"
+                            min="1"
+                            value={tier.maxQty}
+                            onChange={e => handleBulkTierChange(index, 'maxQty', e.target.value)}
+                            placeholder="e.g. 49"
+                            className="input-field py-1.5 text-sm"
+                          />
+                          <input
+                            type="number"
+                            min="0"
+                            value={tier.pricePerUnit}
+                            onChange={e => handleBulkTierChange(index, 'pricePerUnit', e.target.value)}
+                            placeholder="e.g. 399"
+                            className="input-field py-1.5 text-sm"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeBulkTier(index)}
+                            className="btn-ghost p-1.5 text-red-500 hover:bg-red-50 rounded-lg"
+                            title="Remove tier"
+                          >
+                            <X className="w-4 h-4"/>
+                          </button>
+                        </div>
+                      ))}
+
+                      <p className="text-xs text-slate-400">
+                        Leave Max Qty empty for an open-ended tier (e.g. 50+).
+                      </p>
+                    </div>
+                  )}
+                </div>
+                {/* ─────────────────────────────────────────────────────────── */}
 
                 <div className="sm:col-span-2 flex gap-6 flex-wrap">
                   {[{k:'featured',l:'Featured'},{k:'inStock',l:'In Stock'},{k:'customizable',l:'Customizable'}].map(({k,l})=>(
