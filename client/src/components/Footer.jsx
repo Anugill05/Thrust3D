@@ -44,7 +44,7 @@ export default function Footer() {
                 </a>
                 {/* LinkedIn */}
                 <a
-                  href="https://www.linkedin.com/in/thrust-3d-b6228a409/?skipRedirect=true"
+                  href="https://www.linkedin.com/company/thrust-3d/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"
