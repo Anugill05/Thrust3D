@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': { target: 'https://thrust.onrender.com', changeOrigin: true },
-      '/uploads': { target: 'https://thrust.onrender.com', changeOrigin: true }
+      '/api': { target: 'https://thrust3d-b.onrender.com', changeOrigin: true },
+      '/uploads': { target: 'https://thrust3d-b.onrender.com', changeOrigin: true }
     }
   },
   build: { outDir: 'dist', chunkSizeWarningLimit: 1600 }
